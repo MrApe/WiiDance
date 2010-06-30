@@ -18,3 +18,4 @@ FORMS += dancewindow.ui \
 LIBS += -lwinmm \
     -lhid \
     -lsetupapi
+RESOURCES += wiidanceressource.qrc

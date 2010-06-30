@@ -46,7 +46,7 @@ private slots:
 
 signals:
     void stateChanged(boardStateType state);
-
+    void totalChanged(double totalWeight);
 
 };
 

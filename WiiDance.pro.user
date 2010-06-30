@@ -90,7 +90,7 @@
     <value type="QString">LOGONSERVER=\\JONESNETBOOK</value>
     <value type="QString">NUMBER_OF_PROCESSORS=2</value>
     <value type="QString">OS=Windows_NT</value>
-    <value type="QString">PATH=D:\Entwicklung\QtSDK\qt\bin;D:\MinGW\bin;D:\Office\MiKTeX\miktex\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\TortoiseSVN\bin;C:\Program Files\QuickTime\QTSystem\</value>
+    <value type="QString">PATH=D:\Entwicklung\QtSDK\qt\bin;D:\MinGW\bin;D:\Office\MiKTeX\miktex\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\TortoiseSVN\bin;C:\Program Files\QuickTime\QTSystem\;C:\Program Files\TortoiseGit\bin</value>
     <value type="QString">PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC</value>
     <value type="QString">PROCESSOR_ARCHITECTURE=x86</value>
     <value type="QString">PROCESSOR_IDENTIFIER=x86 Family 6 Model 28 Stepping 2, GenuineIntel</value>
@@ -103,6 +103,7 @@
     <value type="QString">QTDIR=D:/Entwicklung/QtSDK/qt</value>
     <value type="QString">QTJAVA=C:\Program Files\Java\jre6\lib\ext\QTJava.zip</value>
     <value type="QString">SESSIONNAME=Console</value>
+    <value type="QString">SSH_ASKPASS=D:\MinGW\bin\ssh-askpass.exe</value>
     <value type="QString">SYSTEMDRIVE=C:</value>
     <value type="QString">SYSTEMROOT=C:\Windows</value>
     <value type="QString">TEMP=C:\Users\jonas\AppData\Local\Temp</value>
@@ -141,7 +142,7 @@
     <value type="QString">LOGONSERVER=\\JONESNETBOOK</value>
     <value type="QString">NUMBER_OF_PROCESSORS=2</value>
     <value type="QString">OS=Windows_NT</value>
-    <value type="QString">PATH=D:\Entwicklung\QtSDK\qt\bin;D:\MinGW\bin;D:\Office\MiKTeX\miktex\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\TortoiseSVN\bin;C:\Program Files\QuickTime\QTSystem\</value>
+    <value type="QString">PATH=D:\Entwicklung\QtSDK\qt\bin;D:\MinGW\bin;D:\Office\MiKTeX\miktex\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\TortoiseSVN\bin;C:\Program Files\QuickTime\QTSystem\;C:\Program Files\TortoiseGit\bin</value>
     <value type="QString">PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC</value>
     <value type="QString">PROCESSOR_ARCHITECTURE=x86</value>
     <value type="QString">PROCESSOR_IDENTIFIER=x86 Family 6 Model 28 Stepping 2, GenuineIntel</value>
@@ -154,6 +155,7 @@
     <value type="QString">QTDIR=D:/Entwicklung/QtSDK/qt</value>
     <value type="QString">QTJAVA=C:\Program Files\Java\jre6\lib\ext\QTJava.zip</value>
     <value type="QString">SESSIONNAME=Console</value>
+    <value type="QString">SSH_ASKPASS=D:\MinGW\bin\ssh-askpass.exe</value>
     <value type="QString">SYSTEMDRIVE=C:</value>
     <value type="QString">SYSTEMROOT=C:\Windows</value>
     <value type="QString">TEMP=C:\Users\jonas\AppData\Local\Temp</value>

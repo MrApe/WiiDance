@@ -27,6 +27,7 @@ private:
     bool m_connected;
     wiimote* m_board;
     QTimer m_timer;
+    int m_counter;
 
 private slots:
     void connectBoard();

@@ -15,21 +15,16 @@ DanceWindow::DanceWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    //ConnectionWizard wizard(&m_board,this);
+    ConnectionWizard wizard(&m_board,this);
     bool connected = false;
-    //connected =  wizard.connectToBoard();
-
-    while (!connected)
-    {
-        connected = m_board.Connect(wiimote::FIRST_AVAILABLE);
-    }
+    connected =  wizard.connectToBoard();
 
     if (connected)
     {
         m_board.SetLEDs(0x01);
-//        QTimer ledTimer(this);
-//        connect(&ledTimer,SIGNAL(timeout()),this,SLOT(toggleLED()));
-//        ledTimer.start(1000);
+        QTimer ledTimer(this);
+        connect(&ledTimer,SIGNAL(timeout()),this,SLOT(toggleLED()));
+        ledTimer.start(1000);
         if (m_board.IsConnected())
         {
             QMessageBox::information(this,
@@ -42,11 +37,18 @@ DanceWindow::DanceWindow(QWidget *parent) :
             connect(this,SIGNAL(stateChanged(boardStateType)),this,SLOT(updateState(boardStateType)));
         }
     } else {
-        QMessageBox::warning(this,
-                             "Aborted!",
-                             "Connection canceled by user.\n Have a nice Day!",
-                             QMessageBox::Ok,
-                             QMessageBox::Ok);
+        QMessageBox warn;
+        warn.setText("No Connection!");
+        warn.setInformativeText("No board found or connection canceled by user.");
+        warn.setIcon(QMessageBox::Information);
+        warn.setDetailedText("However, you can play by typing left and right arrow keys.");
+        warn.setStandardButtons(QMessageBox::Ok|QMessageBox::Cancel);
+
+        int ret = warn.exec();
+        if (ret == QMessageBox::Rejected)
+        {
+            close();
+        }
     }
 }
 
@@ -74,9 +76,9 @@ void DanceWindow::toggleLED()
 void DanceWindow::calcState()
 {
     m_board.RefreshState();
-    float total = m_board.BalanceBoard.Kg.Total;
-    float left = m_board.BalanceBoard.Kg.TopL+m_board.BalanceBoard.Kg.BottomL;
-    float right = m_board.BalanceBoard.Kg.TopR+m_board.BalanceBoard.Kg.BottomR;
+    double total = m_board.BalanceBoard.Kg.Total;
+    double left = m_board.BalanceBoard.Kg.TopL+m_board.BalanceBoard.Kg.BottomL;
+    double right = m_board.BalanceBoard.Kg.TopR+m_board.BalanceBoard.Kg.BottomR;
 
     //if (m_board.RefreshState() == BALANCE_CHANGED)
     //{
@@ -84,7 +86,7 @@ void DanceWindow::calcState()
     if (total > _THR)
     {
 
-        float diff = left -right;
+        double diff = left -right;
 
         if (diff > _THR )
         {
@@ -104,6 +106,7 @@ void DanceWindow::calcState()
     }
 
     emit stateChanged(m_state);
+    emit totalChanged(total);
     //}
 
     QString message = "Left: "+QString::number(left)+", Right: "+QString::number(right)+"Total: "+QString::number(total);
@@ -135,20 +138,20 @@ void DanceWindow::updateState(boardStateType state)
     switch (state)
     {
     case LEFT:
-        ui->boardLeft->setStyleSheet("background-color: rgb(0, 85, 255);");
-        ui->boardRight->setStyleSheet("");
+        ui->boardLeft->setStyleSheet("background-color: rgb(0, 85, 255);background-image: url();");
+        ui->boardRight->setStyleSheet("background-image: url();background-color: rgba(255, 255, 255, 0);");
         break;
     case RIGHT:
-        ui->boardRight->setStyleSheet("background-color: rgb(0, 85, 255);");
-        ui->boardLeft->setStyleSheet("");
+        ui->boardRight->setStyleSheet("background-color: rgb(0, 85, 255);background-image: url();");
+        ui->boardLeft->setStyleSheet("background-image: url();background-color: rgba(255, 255, 255, 0);");
         break;
     case BOTH:
-        ui->boardLeft->setStyleSheet("background-color: rgb(0, 85, 255);");
-        ui->boardRight->setStyleSheet("background-color: rgb(0, 85, 255);");
+        ui->boardLeft->setStyleSheet("background-color: rgb(0, 85, 255);background-image: url();");
+        ui->boardRight->setStyleSheet("background-color: rgb(0, 85, 255);background-image: url();");
         break;
     case NONE:
-        ui->boardLeft->setStyleSheet("");
-        ui->boardRight->setStyleSheet("");
+        ui->boardLeft->setStyleSheet("background-image: url();background-color: rgba(255, 255, 255, 0);");
+        ui->boardRight->setStyleSheet("background-image: url();background-color: rgba(255, 255, 255, 0);");
         break;
     default:
         ui->boardLeft->setStyleSheet("background-color: rgb(255, 0, 0);");
